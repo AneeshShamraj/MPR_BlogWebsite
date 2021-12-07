@@ -1,0 +1,53 @@
+[
+    {
+        "id":"1",
+        "username":"hritik",
+        "password":"123",
+        "blogs":[
+            {
+                "id":1,
+                "author":"hritik",
+                "title":"First blog",
+                "description":"Boht likhna hai abhi",
+                "reactions":{
+                    "likes":4,
+                    "heart":2  
+                }
+            }
+        ]
+    },
+    {
+        "id":"2",
+        "username":"aneesh",
+        "password":"123",
+        "blogs":[
+            {
+                "id":1,
+                "author":"aneesh",
+                "title":"Last blog lol",
+                "description":"Kya hi likhu...",
+                "reactions":{
+                    "likes":4,
+                    "heart":2  
+                }
+            }
+        ]
+    },
+    {
+        "id":"3",
+        "username":"bhoomi",
+        "password":"123",
+        "blogs":[
+            {
+                "id":1,
+                "author":"bhoomi",
+                "title":"Divine lol",
+                "description":"Ha bolo azadi...",
+                "reactions":{
+                    "likes":4,
+                    "heart":2  
+                }
+            }
+        ]
+    }
+]
