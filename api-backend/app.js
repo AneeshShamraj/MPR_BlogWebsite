@@ -2,19 +2,12 @@ const express= require("express");
 const mongoose=require("mongoose");
 const cors = require("cors");
 
-
-
-
 const app=express();
 
 app.use(express.json());
 app.use(cors({ exposedHeaders: "token" }));
 
 app.use(require("./middlewares/auth"));
-
-
-
-
 
 mongoose.connect("mongodb://localhost:27017/projectDb",()=>{
     console.log("Connected to Database");

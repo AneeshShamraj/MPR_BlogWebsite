@@ -9,32 +9,41 @@ router.post("/register", async (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
 	const email=req.body.email;
+	const firstname=req.body.firstname;
+	const lastname=req.body.lastname;
+	const confPassword=req.body.confPassword;
 
-	if (!username || !password || !email)
-		return res.status(400).send("missing username, password or email");
+	if (!username || !password || !email || !firstname || !lastname || !confPassword)
+		return res.status(400).send("One or more of the fields are missing.");
 
 	// checking if username exists
 	const users = await User.find({ username: username });
-	if (users.length > 0) return res.send("username is taken");
+	if (users.length > 0) return res.status(400).send("Username is taken");
+
+	const emailcheck= await User.find({email:email});
+	if(emailcheck.length >0) return res.status(400).send("Only one account per email address is allowed");
+
+	if(password!=confPassword) return res.status(400).send("Password and Confirm Password do not match");
 
 	// add user
-	const newUser = new User({ username, password });
+	const hash=md5(password);
+	const newUser = new User({ username, password:hash, firstname,lastname,email });
 	return res.json(await newUser.save());
 });
 
 router.post("/login", async (req, res) => {
-	const { username, password } = req.body;
+	const { email, password } = req.body;
 
-	if (!username || !password)
-		return res.status(400).send("missing username or password");
+	if (!email || !password)
+		return res.status(400).send("Missing email or password");
 
-	// checking if username exists
-	const users = await User.find({ username: username });
-	if (users.length === 0) return res.send("username is incorrect");
+	// checking if email exists
+	const emails = await User.find({ email: email });
+	if (emails.length === 0) return res.status(400).send("Email is incorrect");
 
-	const user = users[0];
+	const user = emails[0];
 
-	if (user.password !== password) return res.send("incorrect password");
+	if (user.password !== md5(password)) return res.status(400).send("Incorrect password");
 
 	// sending token
 	const token = await jwt.sign(
