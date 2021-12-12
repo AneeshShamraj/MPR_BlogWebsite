@@ -1,51 +1,58 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import "./styles.css";
 
 export const LoginPage = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpass, setConfirmpass] = useState("");
-  const handleClick = (e)=>{
+  const handleClick = (e) => {
     e.preventDefault();
-    if(email && password){
-        history.push("/");
+    console.log("Email:", email);
+    console.log("Password:", password);
+    if (email && password) {
+      history.push("/");
     }
-  }
+  };
   return (
-    <div>
-    <form >
-        <h1>Login</h1>
+    <div class="container">
+      <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="" />
+        <p id="profile-name" class="profile-name-card">
+          {" "}
+          <h1>BlogSquad</h1>
+        </p>
+        <form class="form-signin">
+          <span id="reauth-email" class="reauth-email"></span>
+          <input
+            type="email"
+            id="inputEmail"
+            class="form-control"
+            placeholder="Email"
+            required
+            autofocus
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            class="form-control"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
 
-      <div className="mb-3">
-      <input
-        type="email"
-        className="form-control"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <button
+            className="btn btn-lg btn-primary btn-block btn-login btn btn-dark"
+            type="submit"
+            onClick={handleClick}
+          >
+            Login
+          </button>
+        </form>
       </div>
-      <div className="mb-3">
-      <input
-        type="password"
-        className="form-control"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      </div>
-      <div className="mb-3">
-      <input
-        type="password"
-        value={confirmpass}
-        onChange={(e) => setConfirmpass(e.target.value)}
-        className="form-control"
-        placeholder="Confirm Password"
-      />
-      <button onClick={handleClick}  >Login</button>
-      </div>
-    </form>
     </div>
   );
 };

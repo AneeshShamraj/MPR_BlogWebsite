@@ -4,12 +4,12 @@
 
 .Signedin_container{
     margin:0  auto;
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:10px 20px 10px 60px;
-    background-color: rgb(255, 255, 255);
+    padding:10px 30px 20px 60px;
+    background-color: rgb(255, 253, 253);
     font-size: 18px;
 }
 .Signedin_container .left{

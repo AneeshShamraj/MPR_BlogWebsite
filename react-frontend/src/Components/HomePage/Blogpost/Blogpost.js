@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-// import './styles.css';
+import './styles.css';
 import UserHoverDetail from "../../UserHoverDetail";
 import { useHistory } from "react-router";
 
@@ -26,7 +26,7 @@ const Blogpost = ({id,blog}) => {
         Aur kya likhu ?
         </div>
       </div>
-      <div className="bottom">
+      {/* <div className="bottom">
         <div className="bottom_container">
         {Object.keys(reactionEmoji).map(key=>
           <span  >
@@ -35,7 +35,7 @@ const Blogpost = ({id,blog}) => {
           </span>
         )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
