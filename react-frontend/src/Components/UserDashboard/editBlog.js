@@ -1,22 +1,13 @@
-// return(
-//   <div class="textbox">
-//     <div class="teaxhead"></div>
-//     <div class="textInput">
-//       <input type="text" name="text" id="inputTag" />
-//       <input type="button" name="text" class="button" value="Add" />
-//     </div>
-//   </div>
-// )
-
-// import { connect } from "react-redux";
-// import { createProject } from "../../store/actions/projectAction";
 import React, { useState } from "react";
+import { useParams } from "react-router";
 import "./create.css";
 
-const Create = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const EditBlog = (props) => {
+  const { id } = useParams();
+  const [title, setTitle] = useState(props.location.param1[id].title);
+  const [content, setContent] = useState(props.location.param1[id].content);
 
+  console.log("id", id);
   const handleChange = (e) => {
     console.log(e);
     // this.setState({
@@ -35,7 +26,13 @@ const Create = () => {
         <h5 className="grey-text text-darken-3">Create new blog</h5>
         <div className="input-field">
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" onChange={handleChange} />
+          <input
+            type="text"
+            id="title"
+            onChange={handleChange}
+            value={title}
+            autoFocus
+          />
         </div>
         <div className="input-field">
           <label htmlFor="content">Content</label>
@@ -43,6 +40,7 @@ const Create = () => {
             id="content"
             className="materialize-textarea"
             onChange={handleChange}
+            value={content}
           ></textarea>
         </div>
         <div className="input-field">
@@ -53,4 +51,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default EditBlog;

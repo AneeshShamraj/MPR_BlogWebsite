@@ -28,7 +28,7 @@ export const SignupPage = () => {
 
   return (
     <div class="container">
-      <div class="row">
+      <div class="row1">
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
           <legend>
             <a href="http://www.jquery2dotnet.com">
@@ -42,7 +42,7 @@ export const SignupPage = () => {
                 <input
                   class="form-control"
                   name="firstname"
-                  placeholder="First Name"
+                  placeholder="Full Name"
                   type="text"
                   required
                   autofocus
@@ -94,7 +94,7 @@ export const SignupPage = () => {
               onChange={(e) => setconfirmPassword(e.target.value)}
               value={confirmpassword}
             />
-            <div id="remember" class="checkbox">
+            {/* <div id="remember" class="checkbox">
               <label>
                 <input
                   type="checkbox"
@@ -104,9 +104,9 @@ export const SignupPage = () => {
                 />
                 I agree to the terms and conditions
               </label>
-            </div>
-            <button
-              class="btn btn-lg btn-primary btn-block"
+            </div> */}
+            <button className="sign-btn btn btn-lg btn-primary btn-block"
+              // class="btn btn-lg btn-primary btn-block"
               type="submit"
               onClick={handleClick}
             >

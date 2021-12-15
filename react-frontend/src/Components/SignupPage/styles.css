@@ -1,16 +1,36 @@
-body { padding-top:30px; }
-.form-control { margin-bottom: 10px; }
-body, html {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+body {
+  /* padding-top: 30px; */
 }
-.container {
+.form-control {
+  margin-bottom: 10px;
+}
+body,
+html {
+  height: 100%;
+  background-repeat: no-repeat;
+  /* background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
+}
+/* .container {
     
     max-width: 2000px;
     padding-left: 600px;
     padding-top: 50px;
+} */
+legend {
+  text-align: center;
 }
- legend{
-     text-align: center;
- }
+.row1 {
+  padding-left: 500px;
+  padding-top: 50px;
+  /* background-color: white; */
+}
+.form {
+  background-color: white;
+  width: 25rem;
+  padding: 20px;
+}
+.sign-btn {
+  margin-left: 110px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}

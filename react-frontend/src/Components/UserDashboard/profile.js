@@ -25,12 +25,12 @@ export const Profile = () => {
                         id="btnChangePicture"
                         value="Change"
                       />
-                      <input
+                      {/* <input
                         type="file"
                         // style="display: none"
                         id="profilePicture"
                         name="file"
-                      />
+                      /> */}
                     </div>
                   </div>
                   <div class="userData ml-3">
@@ -38,14 +38,14 @@ export const Profile = () => {
                       class="d-block"
                       // style="font-size: 1.5rem; font-weight: bold"
                     >
-                      <a href="javascript:void(0);">Bblogs</a>
+                      <a href="javascript:void(0);">BlogSquad</a>
                     </h2>
-                    <h6 class="d-block">
+                    {/* <h6 class="d-block">
                       <a href="javascript:void(0)">1,500</a> Video Uploads
                     </h6>
                     <h6 class="d-block">
                       <a href="javascript:void(0)">300</a> Blog Posts
-                    </h6>
+                    </h6> */}
                   </div>
                   <div class="ml-auto">
                     <input
@@ -101,7 +101,7 @@ export const Profile = () => {
                       </div>
                       <hr />
 
-                      <div class="row">
+                      {/* <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
@@ -118,7 +118,7 @@ export const Profile = () => {
                           />
                         </div>
                       </div>
-                      <hr />
+                      <hr /> */}
 
                       <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
@@ -133,7 +133,7 @@ export const Profile = () => {
                             type="text"
                             name="text"
                             id="inputTag"
-                            value=" xyz@gmail.com"
+                            value=""
                           />
                         </div>
                       </div>
@@ -151,7 +151,7 @@ export const Profile = () => {
                             type="text"
                             name="text"
                             id="inputTag"
-                            value="abc"
+                            value=""
                           />
                         </div>
                       </div>
@@ -161,7 +161,7 @@ export const Profile = () => {
                           <label
                           // style="font-weight: bold"
                           >
-                            Contact
+                            Confirm Password
                           </label>
                         </div>
                         <div class="col-md-8 col-6">
@@ -169,7 +169,7 @@ export const Profile = () => {
                             type="text"
                             name="text"
                             id="inputTag"
-                            value="1234567890"
+                            value=""
                           />
                         </div>
                       </div>

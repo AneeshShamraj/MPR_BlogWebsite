@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./styles.css";
 import Blogpost from "./Blogpost/Blogpost";
-import { Intro } from "./Intro";
+import SearchBar from "./SearchBar";
 
 const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -14,12 +14,27 @@ const HomePage = () => {
         console.log(blogs);
       });
   }, []);
+
+  const customStyles = {
+    placeholder: (provided, state) => ({
+      ...provided,
+      marginRight: "auto",
+    }),
+  };
+  const handleOnChange = () => {
+    console.log("inside on change");
+  };
   return (
     <div class="container">
-      <Intro />
+      <SearchBar
+        placeholder={"Search..."}
+        onChange={handleOnChange}
+        options={[]}
+        customStyles={customStyles}
+      />
       <Skeleton />
       <div className="rightPost">
-        {[...blogs].splice(0, 10).map((val, index) => (
+        {[...blogs].splice(0, 5).map((val, index) => (
           <Blogpost id={index} key={index} blog={val} />
         ))}
       </div>
