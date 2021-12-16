@@ -1,21 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import "./styles.css";
+import axios from "axios";
+
 
 const BlogDetail = () => {
   const { id } = useParams();
-  const [user, setUser] = useState({});
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/" + id)
-      .then((response) => response.json())
-      .then((json) => {
-        setUser(json);
-        console.log(user);
-      });
-  }, []);
+  const [blog, setBlog] = useState({});
+  // useEffect(() => {
+  //   fetch("https:localhost:5000/blogs/" + )
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setBlog(json);
+  //     });
+  // }, []);
+  useEffect(()=>{
+    axios.get("http:localhost:5000/home/userposts/postname/"+id)
+  .then(function (response) {
+    setBlog(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  },[]);
   return (
     <div>
-      <div className="BlogDetail_wrapper">{/* <h1>{user.title}</h1> */}</div>
+
+     
+
+      <div className="BlogDetail_wrapper">
+        <h1>TEST</h1>
+      </div>
+
       {/* <nav className="navbar navbar-inverse  navbar-static-top">
         <div className="container">
           <div className="navbar-header">

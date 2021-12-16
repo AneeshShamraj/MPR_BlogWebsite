@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   // Todo : Check whether user has logedin or not .
 
+
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const handleLogoutClick = () => {
     console.log("inside here");
     setIsLoggedIn(false);
   };
+
+
+//   const [user, setUser] = useState(false);
 
   return (
     // <nav className="nav-wrapper grey darken-3">

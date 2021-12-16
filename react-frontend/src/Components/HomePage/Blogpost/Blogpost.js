@@ -13,24 +13,19 @@ const Blogpost = ({ id, blog }) => {
   return (
     <div className="blogpost">
       <div className="top">
-        <div className="img"></div>
-        <div
-          className="name"
-          onMouseLeave={() => {
-            setTimeout(() => setShow(false), 300);
-          }}
-          onMouseEnter={() => setShow(true)}
-        >
-          Bhoomi Shetty
-        </div>
-        {show ? <UserHoverDetail /> : null}
+
+
+
+          <div className="img"></div>
+          <div className="name" onMouseLeave={()=> {
+              setTimeout(()=>setShow(false),300);
+          } }  onMouseEnter={()=> setShow(true) }  >{blog.user}</div>
+          {show?<UserHoverDetail/>:null}
       </div>
       <div className="body">
-        <div className="title" onClick={() => history.push("/" + (id + 1))}>
-          {blog.title}
-        </div>
-        <div className="description">
-          Short Desc about the blog, Small and crisp... Aur kya likhu ?
+        <div className="title"onClick={()=>history.push("/blogs/"+(id))}  >{blog.title}</div>
+        <div className="description">{blog.content.substring(0,25)}
+
         </div>
       </div>
       {/* <div className="bottom">

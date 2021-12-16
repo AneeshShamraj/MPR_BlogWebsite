@@ -20,6 +20,7 @@ router.post("/register", async (req, res) => {
 	const users = await User.find({ username: username });
 	if (users.length > 0) return res.status(400).send("Username is taken");
 
+	//checking for multiple accounts for a single email
 	const emailcheck= await User.find({email:email});
 	if(emailcheck.length >0) return res.status(400).send("Only one account per email address is allowed");
 

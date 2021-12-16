@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./styles.css";
 import Blogpost from "./Blogpost/Blogpost";
+
 import SearchBar from "./SearchBar";
+
+import { Intro } from "./Intro";
+import axios from "axios";
+
 
 const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch("http://localhost:5000/home/")
       .then((response) => response.json())
       .then((json) => {
         setBlogs(json);
@@ -34,8 +39,10 @@ const HomePage = () => {
       />
       <Skeleton />
       <div className="rightPost">
-        {[...blogs].splice(0, 5).map((val, index) => (
-          <Blogpost id={index} key={index} blog={val} />
+
+        {[...blogs].map((val, index) => (
+          <Blogpost id={val.id} key={val._id} blog={val} />
+
         ))}
       </div>
     </div>
