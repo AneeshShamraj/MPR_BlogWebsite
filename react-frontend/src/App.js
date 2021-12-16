@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
 import Blogpost from "./Components/HomePage/Blogpost/Blogpost";
@@ -12,6 +12,16 @@ import { LoginPage } from "./Components/LoginPage";
 import { Profile } from "./Components/UserDashboard/profile";
 
 function App() {
+  const [token, setToken] = useState(null);
+
+	useEffect(() => {
+		if (localStorage.token) setToken(localStorage.token);
+	}, []);
+
+	useEffect(() => {
+		console.log({ newtoken:token });
+	}, [token]);
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -22,7 +32,7 @@ function App() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/" component={Home} />
         <Route exact path="/user-dashboard" component={UserDashboard} />
-        <Route exact path="/:id" component={BlogDetail} />
+        <Route exact path="/blogs/:id" component={BlogDetail} />
       </Switch>
       <Footer />
     </BrowserRouter>

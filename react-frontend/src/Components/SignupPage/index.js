@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./styles.css";
+import axios from "axios";
 
 export const SignupPage = () => {
   const history = useHistory();
@@ -14,16 +15,27 @@ export const SignupPage = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (
-      firstname &&
-      lastname &&
-      email &&
-      newpassword &&
-      confirmpassword &&
-      checkbox
-    ) {
-      history.push("/");
-    }
+    const body={
+      username:e.target.username.value,
+      password:e.target.password.value,
+      email:e.target.email.value,
+      confPassword:e.target.confPassword.value,
+      firstname:e.target.firstname.value,
+      lastname:e.target.lastname.value}
+      console.log({body});
+    
+      axios.post("http://localhost:5000/auth/register",body)
+      .then(res =>{
+        console.log(res);
+        window.location.href="/login";
+      })
+      .catch(err =>{
+        if(err.response.status===400){
+          alert(err.response.data);
+        }
+      });
+
+
   };
 
   return (
@@ -36,10 +48,11 @@ export const SignupPage = () => {
             </a>{" "}
             Sign up!
           </legend>
-          <form action="#" method="post" class="form" role="form">
+          <form onSubmit={handleClick} class="form" >
             <div className="row">
               <div class="col-xs-6 col-md-6">
                 <input
+                required
                   class="form-control"
                   name="firstname"
                   placeholder="First Name"
@@ -52,6 +65,7 @@ export const SignupPage = () => {
               </div>
               <div className="col-xs-6 col-md-6">
                 <input
+                required
                   class="form-control"
                   name="lastname"
                   placeholder="Last Name"
@@ -63,22 +77,25 @@ export const SignupPage = () => {
               </div>
             </div>
             <input
+            required
               class="form-control"
-              name="userName"
+              name="username"
               placeholder="Create UserName"
-              type="email"
+              type="text"
               onChange={(e) => setuserName(e.target.value)}
               value={username}
             />
             <input
+            required
               class="form-control"
-              name="youremail"
+              name="email"
               placeholder="Your Email"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
             <input
+            required
               class="form-control"
               name="password"
               placeholder="New Password"
@@ -87,14 +104,15 @@ export const SignupPage = () => {
               value={newpassword}
             />
             <input
+            required
               class="form-control"
-              name="confirm password"
+              name="confPassword"
               placeholder="Confirm Password"
-              type="email"
+              type="password"
               onChange={(e) => setconfirmPassword(e.target.value)}
               value={confirmpassword}
             />
-            <div id="remember" class="checkbox">
+            {/* <div id="remember" class="checkbox">
               <label>
                 <input
                   type="checkbox"
@@ -104,14 +122,13 @@ export const SignupPage = () => {
                 />
                 I agree to the terms and conditions
               </label>
-            </div>
-            <button
-              class="btn btn-lg btn-primary btn-block"
-              type="submit"
-              onClick={handleClick}
-            >
-              Sign up
-            </button>
+            </div> */}
+            <input
+						className="btn btn-lg btn-primary btn-block"
+						type="submit"
+						value="sign up"
+					/>
+            
           </form>
         </div>
       </div>

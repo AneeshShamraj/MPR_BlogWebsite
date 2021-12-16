@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./styles.css";
+import axios from "axios";
 
 export const LoginPage = () => {
   const history = useHistory();
@@ -8,11 +9,22 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    if (email && password) {
-      history.push("/");
-    }
+    const body={
+      password:e.target.password.value,
+      email:e.target.email.value,
+      }
+      console.log({body});
+    
+      axios.post("http://localhost:5000/auth/login",body)
+      .then(res =>{
+        localStorage.setItem("token", res.headers.token);
+        window.location.href="/home";
+      })
+      .catch(err =>{
+        if(err.response.status===400){
+          alert(err.response.data);
+        }
+      });
   };
   return (
     <div class="container">
@@ -22,11 +34,12 @@ export const LoginPage = () => {
           {" "}
           <h1>BlogSquad</h1>
         </p>
-        <form class="form-signin">
+        <form onSubmit={handleClick} class="form-signin">
           <span id="reauth-email" class="reauth-email"></span>
           <input
             type="email"
             id="inputEmail"
+            name="email"
             class="form-control"
             placeholder="Email"
             required
@@ -37,6 +50,7 @@ export const LoginPage = () => {
           <input
             type="password"
             id="inputPassword"
+            name="password"
             class="form-control"
             placeholder="Password"
             required
@@ -47,7 +61,7 @@ export const LoginPage = () => {
           <button
             className="btn btn-lg btn-primary btn-block btn-login btn btn-dark"
             type="submit"
-            onClick={handleClick}
+            
           >
             Login
           </button>
