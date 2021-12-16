@@ -25,9 +25,13 @@ const BlogDetail = () => {
   },[]);
   return (
     <div>
+
+     
+
       <div className="BlogDetail_wrapper">
         <h1>TEST</h1>
       </div>
+
       {/* <nav className="navbar navbar-inverse  navbar-static-top">
         <div className="container">
           <div className="navbar-header">

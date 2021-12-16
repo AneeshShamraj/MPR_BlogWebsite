@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
 }
@@ -47,4 +47,17 @@ input#inputTag {
   margin: 0 0px 0 6px;
   padding: 0 8px;
   cursor: pointer;
+} */
+.create-form {
+  margin-top: 30px;
+  padding: 20px;
+  margin-left: 400px;
+  width: 50%;
+}
+.create-container {
+  margin-bottom: 266px;
+  /* width: 80rem; */
+  /* height: 100px; */
+  /* padding: 100px; */
+  /* padding-left: 350px; */
 }

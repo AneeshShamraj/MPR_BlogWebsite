@@ -40,7 +40,7 @@ export const SignupPage = () => {
 
   return (
     <div class="container">
-      <div class="row">
+      <div class="row1">
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
           <legend>
             <a href="http://www.jquery2dotnet.com">
@@ -55,7 +55,7 @@ export const SignupPage = () => {
                 required
                   class="form-control"
                   name="firstname"
-                  placeholder="First Name"
+                  placeholder="Full Name"
                   type="text"
                   required
                   autofocus
@@ -123,12 +123,14 @@ export const SignupPage = () => {
                 I agree to the terms and conditions
               </label>
             </div> */}
+
             <input
 						className="btn btn-lg btn-primary btn-block"
 						type="submit"
 						value="sign up"
 					/>
             
+
           </form>
         </div>
       </div>

@@ -1,18 +1,21 @@
-import React,{useState} from "react";
-import './styles.css';
+import React, { useState } from "react";
+import "./styles.css";
 import UserHoverDetail from "../../UserHoverDetail";
 import { useHistory } from "react-router";
 
-const Blogpost = ({id,blog}) => {
-    const history = useHistory();
-    const [show,setShow] = useState(false);
-    const reactionEmoji = {
-        like: '👍',
-        dislike: '👎',
-      }
+const Blogpost = ({ id, blog }) => {
+  const history = useHistory();
+  const [show, setShow] = useState(false);
+  const reactionEmoji = {
+    like: "👍",
+    dislike: "👎",
+  };
   return (
     <div className="blogpost">
       <div className="top">
+
+
+
           <div className="img"></div>
           <div className="name" onMouseLeave={()=> {
               setTimeout(()=>setShow(false),300);
@@ -22,6 +25,7 @@ const Blogpost = ({id,blog}) => {
       <div className="body">
         <div className="title"onClick={()=>history.push("/blogs/"+(id))}  >{blog.title}</div>
         <div className="description">{blog.content.substring(0,25)}
+
         </div>
       </div>
       {/* <div className="bottom">
@@ -38,4 +42,4 @@ const Blogpost = ({id,blog}) => {
   );
 };
 
-export default Blogpost ;
+export default Blogpost;

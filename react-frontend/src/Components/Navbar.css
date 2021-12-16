@@ -1,8 +1,13 @@
-.nav_container{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 99;
-    background-color: #fff;
-
+.nav_container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  /* background-color: #0F2C67; */
+  /* background-color: #160040; */
+  background-color: #ec407a;
+  color: #fff;
+}
+.nav-wrapper {
+  padding: 0px;
 }

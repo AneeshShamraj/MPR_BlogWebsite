@@ -1,22 +1,29 @@
 import React from "react";
-import './Signedin.css'
+// import "./Signedin.css";
+import { NavLink } from "react-router-dom";
 
-const Signedin = ()=>{
-    return(
-        <div className="Signedin_container">
-            <div className="left">
-                <h3>Blog <br/>Squad</h3>
-            </div>
-            <div className="right">
-                <a href="/">Home</a>
-                {/* <a href="create">Create Blog</a> */}
-                <a href="#">Search</a>
-                <a href="user-dashboard">User Dashboard</a>
+const Signedin = (props) => {
+  return (
+    <ul className="right">
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/user-dashboard">User Dashboard</NavLink>
+      </li>
+      <li>
+        <NavLink onClick={() => props.onLogoutClick()} to="/">
+          Logout
+        </NavLink>
+      </li>
 
-                
-            </div>
-        </div>
-    )
-}
+      <li>
+        <NavLink to="/" className="btn btn-floating pink lighten-1">
+          NN
+        </NavLink>
+      </li>
+    </ul>
+  );
+};
 
-export default Signedin ;
+export default Signedin;
