@@ -12,6 +12,10 @@ const mongoose=require("mongoose");
         type:String,
         required:true,
     },
+    timestamp:{
+        type:Number,
+        required:true,
+    }
  });
 
  module.exports=mongoose.model("Post",postSchema);

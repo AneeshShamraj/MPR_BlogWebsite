@@ -6,28 +6,27 @@ const filter = new Filter();
 const _ = require("lodash");
 
 router.get("/", async (req, res) => {
-    var foundPosts = await Post.find({});
+    var foundPosts = await Post.find({}).sort({timestamp:-1});
+    res.json(foundPosts.slice(0,5));
+});
+
+
+router.get("/userposts",require("../middlewares/authOnly"), async (req, res) => {
+    const currentUser = req.auth.user.username;
+    var foundPosts = await Post.find({ user: currentUser }.sort({timestamp:-1}));
     res.json(foundPosts);
 });
 
 
-router.get("/:userID", (req, res) => {
-    const currentUser = req.params.userID;
-    var foundPosts = Post.find({ user: currentUser });
-    res.json(foundPosts);
-});
+router.get("/userposts/postname/:id",async (req, res) => {
 
-router.get("/:userID/:blogID", (req, res) => {
-
-    const currentUser = req.params.userID;
-    const currentTitle = req.params.blogID;
-    const requestedPost = Post.find({ user: currentUser, title: currentTitle });
+    const id = req.params.id;
+    const requestedPost = await Post.find({ _id:id });
     res.json(requestedPost);
 
-
 });
 
-router.post("/createblog",require("../middlewares/authOnly"), (req, res) => {
+router.post("/createblog",require("../middlewares/authOnly"),async (req, res) => {
     currentUser=req.auth.user.username;
     newTitle = req.body.postTitle;
     newBody = req.body.postBody;
@@ -35,17 +34,16 @@ router.post("/createblog",require("../middlewares/authOnly"), (req, res) => {
         res.json({err:"Censored Words detected in the blog. Cannot post the blog."});
     }
     else {
+        const timestamp=Date.now();
         const newPost = new Post({
             title: newTitle,
             content: newBody,
-            user: currentUser
+            user: currentUser,
+            timestamp:timestamp
         });
-        newPost.save();
+        await newPost.save();
         res.json(newPost);
     }
-
-
-
 });
 
 module.exports = router;
