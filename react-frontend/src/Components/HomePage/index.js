@@ -5,9 +5,7 @@ import Blogpost from "./Blogpost/Blogpost";
 
 import SearchBar from "./SearchBar";
 
-import { Intro } from "./Intro";
 import axios from "axios";
-
 
 const HomePage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -39,10 +37,8 @@ const HomePage = () => {
       />
       <Skeleton />
       <div className="rightPost">
-
         {[...blogs].map((val, index) => (
           <Blogpost id={val.id} key={val._id} blog={val} />
-
         ))}
       </div>
     </div>
