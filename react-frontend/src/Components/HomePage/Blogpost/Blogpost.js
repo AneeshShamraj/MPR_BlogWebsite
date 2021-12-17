@@ -16,11 +16,14 @@ const Blogpost = ({ id, blog }) => {
 
 
 
-          <div className="img"></div>
-          <div className="name" onMouseLeave={()=> {
-              setTimeout(()=>setShow(false),300);
-          } }  onMouseEnter={()=> setShow(true) }  >{blog.user}</div>
-          {show?<UserHoverDetail/>:null}
+          {/* <div className="img"></div> */}
+          <div className="name"
+          // onMouseLeave={()=> {
+          //     setTimeout(()=>setShow(false),300);
+          // } }  onMouseEnter={()=> setShow(true) }  
+          >
+          {blog.user}</div>
+          {/* {show?<UserHoverDetail/>:null} */}
       </div>
       <div className="body">
         <div className="title"onClick={()=>history.push("/blogs/"+(id))}  >{blog.title}</div>

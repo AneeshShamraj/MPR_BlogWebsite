@@ -39,21 +39,21 @@ export const SignupPage = () => {
   };
 
   return (
-    <div class="container">
-      <div class="row1">
-        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+    <div className="container">
+      <div className="row1">
+        <div className="col-xs-12 col-sm-12 col-md-4 well well-sm">
           <legend>
             <a href="http://www.jquery2dotnet.com">
-              <i class="glyphicon glyphicon-globe"></i>
+              <i className="glyphicon glyphicon-globe"></i>
             </a>{" "}
             Sign up!
           </legend>
-          <form onSubmit={handleClick} class="form" >
+          <form onSubmit={handleClick} className="form" >
             <div className="row">
-              <div class="col-xs-6 col-md-6">
+              <div className="col-xs-6 col-md-6">
                 <input
                 required
-                  class="form-control"
+                  className="form-control"
                   name="firstname"
                   placeholder="Full Name"
                   type="text"
@@ -66,7 +66,7 @@ export const SignupPage = () => {
               <div className="col-xs-6 col-md-6">
                 <input
                 required
-                  class="form-control"
+                  className="form-control"
                   name="lastname"
                   placeholder="Last Name"
                   type="text"
@@ -78,7 +78,7 @@ export const SignupPage = () => {
             </div>
             <input
             required
-              class="form-control"
+              className="form-control"
               name="username"
               placeholder="Create UserName"
               type="text"
@@ -87,7 +87,7 @@ export const SignupPage = () => {
             />
             <input
             required
-              class="form-control"
+              className="form-control"
               name="email"
               placeholder="Your Email"
               type="email"
@@ -96,7 +96,7 @@ export const SignupPage = () => {
             />
             <input
             required
-              class="form-control"
+              className="form-control"
               name="password"
               placeholder="New Password"
               type="password"
@@ -105,14 +105,14 @@ export const SignupPage = () => {
             />
             <input
             required
-              class="form-control"
+              className="form-control"
               name="confPassword"
               placeholder="Confirm Password"
               type="password"
               onChange={(e) => setconfirmPassword(e.target.value)}
               value={confirmpassword}
             />
-            {/* <div id="remember" class="checkbox">
+            {/* <div id="remember" className="checkbox">
               <label>
                 <input
                   type="checkbox"

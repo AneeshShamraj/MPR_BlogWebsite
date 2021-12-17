@@ -18,7 +18,7 @@ export const LoginPage = () => {
       axios.post("http://localhost:5000/auth/login",body)
       .then(res =>{
         localStorage.setItem("token", res.headers.token);
-        window.location.href="/home";
+        window.location.href="/";
       })
       .catch(err =>{
         if(err.response.status===400){
@@ -27,20 +27,20 @@ export const LoginPage = () => {
       });
   };
   return (
-    <div class="container">
-      <div class="card card-container">
-        <img id="profile-img" class="profile-img-card" src="" />
-        <p id="profile-name" class="profile-name-card">
+    <div className="container">
+      <div className="card card-container">
+        <img id="profile-img" className="profile-img-card" src="" />
+        <p id="profile-name" className="profile-name-card">
           {" "}
           <h1>BlogSquad</h1>
         </p>
-        <form onSubmit={handleClick} class="form-signin">
-          <span id="reauth-email" class="reauth-email"></span>
+        <form onSubmit={handleClick} className="form-signin">
+          <span id="reauth-email" className="reauth-email"></span>
           <input
             type="email"
             id="inputEmail"
             name="email"
-            class="form-control"
+            className="form-control"
             placeholder="Email"
             required
             autofocus
@@ -51,7 +51,7 @@ export const LoginPage = () => {
             type="password"
             id="inputPassword"
             name="password"
-            class="form-control"
+            className="form-control"
             placeholder="Password"
             required
             onChange={(e) => setPassword(e.target.value)}

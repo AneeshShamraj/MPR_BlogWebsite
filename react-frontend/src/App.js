@@ -13,16 +13,7 @@ import { Profile } from "./Components/UserDashboard/profile";
 import EditBlog from "./Components/UserDashboard/editBlog";
 
 function App() {
-  const [token, setToken] = useState(null);
-
-	useEffect(() => {
-		if (localStorage.token) setToken(localStorage.token);
-	}, []);
-
-	useEffect(() => {
-		console.log({ newtoken:token });
-	}, [token]);
-
+  
   return (
     <BrowserRouter>
       <Navbar />

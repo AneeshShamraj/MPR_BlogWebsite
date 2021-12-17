@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./styles.css";
 import Blogpost from "./Blogpost/Blogpost";
-
 import SearchBar from "./SearchBar";
-
-import { Intro } from "./Intro";
 import axios from "axios";
 
 
@@ -18,6 +15,7 @@ const HomePage = () => {
         setBlogs(json);
         console.log(blogs);
       });
+    // axios.get("http://localhost:5000/home/")
   }, []);
 
   const customStyles = {
@@ -30,7 +28,7 @@ const HomePage = () => {
     console.log("inside on change");
   };
   return (
-    <div class="container">
+    <div className="container">
       <SearchBar
         placeholder={"Search..."}
         onChange={handleOnChange}
@@ -41,7 +39,7 @@ const HomePage = () => {
       <div className="rightPost">
 
         {[...blogs].map((val, index) => (
-          <Blogpost id={val.id} key={val._id} blog={val} />
+          <Blogpost id={val._id} key={val._id} blog={val} />
 
         ))}
       </div>

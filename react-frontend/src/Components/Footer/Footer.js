@@ -16,7 +16,7 @@ const Footer= ()=>{
                     <a href="#">Hritik</a>
                 </div>
                 <div className="third">
-                    <div class="h4">Follow us</div>
+                    <div className="h4">Follow us</div>
                     <a href="#">Instagram</a>
                     <a href="#">Linkedn</a>
                     <a href="#">Twitter</a>

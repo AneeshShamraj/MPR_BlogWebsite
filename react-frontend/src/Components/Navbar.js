@@ -9,7 +9,6 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const handleLogoutClick = () => {
-    console.log("inside here");
     setIsLoggedIn(false);
   };
 
