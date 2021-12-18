@@ -27,7 +27,7 @@ const Blogpost = ({ id, blog }) => {
       </div>
       <div className="body">
         <div className="title"onClick={()=>history.push("/blogs/"+(id))}  >{blog.title}</div>
-        <div className="description">{blog.content.substring(0,25)}
+        <div className="description">{blog.content.substring(0,250) }.......
 
         </div>
       </div>
