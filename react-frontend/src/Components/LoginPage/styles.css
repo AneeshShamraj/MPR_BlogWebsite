@@ -125,3 +125,10 @@ html {
 .forgot-password:focus {
   /* color: rgb(12, 97, 33); */
 }
+
+
+
+.form-signin{
+  padding-top: 50px;
+  padding-bottom: 100px;
+}

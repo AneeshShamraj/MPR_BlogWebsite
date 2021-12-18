@@ -29,7 +29,7 @@ export const LoginPage = () => {
   return (
     <div className="container">
       <div className="card card-container">
-        <img id="profile-img" className="profile-img-card" src="" />
+         {/* <img id="profile-img" className="profile-img-card" src="logo.jpeg" /> */}
         <p id="profile-name" className="profile-name-card">
           {" "}
           <h1>BlogSquad</h1>

@@ -17,11 +17,11 @@ const Signedin = (props) => {
         </NavLink>
       </li>
 
-      <li>
+      {/* <li>
         <NavLink to="/" className="btn btn-floating pink lighten-1">
-          NN
+          
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   );
 };

@@ -19,10 +19,14 @@ router.get("/userposts",require("../middlewares/authOnly"), async (req, res) => 
 
 
 router.get("/userposts/postname/:id",async (req, res) => {
-
     const id = req.params.id;
-    const requestedPost = await Post.find({ _id:id });
+    try{
+    const requestedPost = await Post.findById(id);
     res.json(requestedPost);
+    }
+    catch{
+        res.send("Cannot find post");
+    }
 
 });
 
@@ -31,7 +35,7 @@ router.post("/createblog",require("../middlewares/authOnly"),async (req, res) =>
     const newTitle = req.body.postTitle;
     const newBody = req.body.postBody;
     if (filter.isProfane(newTitle) || filter.isProfane(newBody)) {
-        res.json({err:"Censored Words detected in the blog. Cannot post the blog."});
+        res.status(400).send("Censored Words detected in the blog. Cannot post the blog.");
     }
     else {
         const timestamp=Date.now();
@@ -51,7 +55,7 @@ router.post("/editblog/:id",require("../middlewares/authOnly"),async (req, res) 
     const newTitle = req.body.postTitle;
     const newBody = req.body.postBody;
     if (filter.isProfane(newTitle) || filter.isProfane(newBody)) {
-        res.json({err:"Censored Words detected in the blog. Cannot post the blog."});
+        res.status(400).send("Censored Words detected in the blog. Cannot post the blog.");
     }
     else {
         const timestamp=Date.now();
@@ -59,12 +63,12 @@ router.post("/editblog/:id",require("../middlewares/authOnly"),async (req, res) 
         res.send(await Post.updateOne({_id:id},{title:newTitle,content:newBody,timestamp:timestamp}));
         }
         catch{
-            res.status(400).send("Error");
+            res.status(500).send("Error");
         }
     }
 });
 
-router.get("/getblog/:id",require("../middlewares/authOnly"),async (req, res) => {
+router.get("/getblog/:id",async (req, res) => {
     const id=req.params.id
         try{
         return res.json(await Post.findById(id));

@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const UserDashboard = () => {
+  if(!localStorage.token){
+    window.location="/";
+    alert("User must be signed in to access this");
+  }
   const customStyles = {
     container: (base) => ({
       ...base,
@@ -39,7 +43,6 @@ export const UserDashboard = () => {
       token: localStorage.token
     }})
     .then((res)=>{
-      console.log("anil sekz");
       console.log(res);
       setBlogs(res.data);
     })

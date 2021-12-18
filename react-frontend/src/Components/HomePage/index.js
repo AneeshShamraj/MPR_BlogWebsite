@@ -29,12 +29,12 @@ const HomePage = () => {
   };
   return (
     <div className="container">
-      <SearchBar
+      {/* <SearchBar
         placeholder={"Search..."}
         onChange={handleOnChange}
         options={[]}
         customStyles={customStyles}
-      />
+      /> */}
       <Skeleton />
       <div className="rightPost">
 

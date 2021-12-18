@@ -15,6 +15,7 @@ export const Profile = () => {
     })
     .catch(err =>{
         alert(err.response.data);
+        window.location="/";
       })
   },[]);
   if(user){

@@ -4,6 +4,10 @@ import { useParams } from "react-router";
 import "./create.css";
 
 const EditBlog = (props) => {
+  if(!localStorage.token){
+    window.location="/";
+    alert("User must be signed in to access this");
+  }
   const { id } = useParams();
   console.log({id});
   // const [title, setTitle] = useState(props.location.param1[id].title);
@@ -63,10 +67,16 @@ const EditBlog = (props) => {
       })
       .then(res =>{
         console.log(res);
+        window.location="/"
       })
       .catch(err =>{
         if(err.response.status===400){
+          console.log(err);
           alert(err.response.data);
+        }
+        else{
+          alert(err.response.data);
+          window.location="/"
         }
       });
   };
@@ -93,6 +103,7 @@ const EditBlog = (props) => {
             // onChange={handleChange}
             // defaultValue={content}
             defaultValue={content}
+            autoFocus
           ></textarea>
         </div>
         <div className="input-field">

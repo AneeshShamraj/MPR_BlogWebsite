@@ -15,6 +15,10 @@ import "./create.css";
 import axios from "axios";
 
 const Create = () => {
+  if(!localStorage.token){
+    window.location="/";
+    alert("User must be signed in to access this");
+  }
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -40,6 +44,13 @@ const Create = () => {
       })
       .then(res =>{
         console.log(res);
+        // if(res.err){
+        //   alert(res.err);
+        //   // window.location.reload();
+        // }
+        // else{
+        window.location="/"
+        // }
       })
       .catch(err =>{
         if(err.response.status===400){
