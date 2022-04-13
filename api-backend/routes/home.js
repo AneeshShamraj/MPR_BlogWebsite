@@ -5,6 +5,8 @@ const User = require("../models/User");
 const filter = new Filter();
 const _ = require("lodash");
 
+filter.addWords('somebadwords');
+
 router.get("/", async (req, res) => {
     var foundPosts = await Post.find({}).sort({timestamp:-1});
     res.json(foundPosts.slice(0,5));
