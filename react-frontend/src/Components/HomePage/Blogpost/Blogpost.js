@@ -11,36 +11,18 @@ const Blogpost = ({ id, blog }) => {
     dislike: "👎",
   };
   return (
-    <div className="blogpost">
+    <div className="blogpost" onClick={() => history.push("/blogs/" + id)}>
       <div className="top">
-
-
-
-          {/* <div className="img"></div> */}
-          <div className="name"
-          // onMouseLeave={()=> {
-          //     setTimeout(()=>setShow(false),300);
-          // } }  onMouseEnter={()=> setShow(true) }  
-          >
-          {blog.user}</div>
-          {/* {show?<UserHoverDetail/>:null} */}
+        <div className="name">{blog.user}</div>
       </div>
       <div className="body">
-        <div className="title"onClick={()=>history.push("/blogs/"+(id))}  >{blog.title}</div>
-        <div className="description">{blog.content.substring(0,250) }.......
-
+        <div className="title" >
+          {blog.title}
+        </div>
+        <div className="description">
+          {blog.content.substring(0, 250)}.......
         </div>
       </div>
-      {/* <div className="bottom">
-        <div className="bottom_container">
-        {Object.keys(reactionEmoji).map(key=>
-          <span  >
-            <small className="Emoji">{reactionEmoji[key]}</small>
-            <p>{100}</p>
-          </span>
-        )}
-        </div>
-      </div> */}
     </div>
   );
 };

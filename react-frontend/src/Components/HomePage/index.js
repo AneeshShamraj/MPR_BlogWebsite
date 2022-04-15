@@ -5,8 +5,8 @@ import Blogpost from "./Blogpost/Blogpost";
 import SearchBar from "./SearchBar";
 import axios from "axios";
 
-
 const HomePage = () => {
+  const category = ["science", "entertainment", "news", "tourism", "finance"];
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/home/")
@@ -28,20 +28,19 @@ const HomePage = () => {
     console.log("inside on change");
   };
   return (
-    <div className="container">
-      {/* <SearchBar
-        placeholder={"Search..."}
-        onChange={handleOnChange}
-        options={[]}
-        customStyles={customStyles}
-      /> */}
-      <Skeleton />
-      <div className="rightPost">
-
+    <div className="home__container">
+      <div className="homePage__left">
         {[...blogs].map((val, index) => (
           <Blogpost id={val._id} key={val._id} blog={val} />
-
         ))}
+      </div>
+      <div className="homePage__right">
+        <div className="homePage__right_card">
+          <h3>Interests</h3>
+          {[...category].map((val, index) => (
+            <p key={index}> {val}</p>
+          ))}
+        </div>
       </div>
     </div>
   );

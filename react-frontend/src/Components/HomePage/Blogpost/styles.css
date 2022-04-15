@@ -1,16 +1,22 @@
 .blogpost {
-  min-height: 35vh;
+  min-height: 26vh;
   display: flex;
   flex-direction: column;
   min-width: 40vw;
-  max-width: 50%;
+  width: 70%;
   margin: auto;
   font-family: sans-serif;
   padding-left: 20px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.116);
   margin-top: 5vh;
   background-color: rgb(255, 255, 255);
-  /* background-color: #eaeaea; */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.116);
+}
+.blogpost:hover{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.116);
 }
 .img {
   width: 30px;
