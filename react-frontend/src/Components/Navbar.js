@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Signedin from "./Signedin";
 import Notsignedin from "./Notsignedin";
-// import "./Navbar.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   if(localStorage.token){
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     // <nav className="nav-wrapper grey darken-3">
     <nav className="nav-wrapper #ec407a pink lighten-1">
-      <div className="container">
+      <div className="Nav__container">
         <Link to="/" className="brand-logo">
           BlogSquad
         </Link>

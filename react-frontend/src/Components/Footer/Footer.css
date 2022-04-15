@@ -1,8 +1,5 @@
 .Footer_container {
-  /* min-height: 350px; */
-  /* background-color: rgb(27, 27, 27); */
-  /* background-color: #0F2C67; */
-  /* background-color: #160040; */
+
   background-color: #ec407a;
   /* padding: 40px 20px 0 20px; */
   color: #eee;
@@ -13,15 +10,7 @@
   bottom: 0px;
   width: 100%;
   margin-top: 10px;
-  /* background-color: #ec407a;
-  color: #eee;
-  padding: 20px 0;
-  width: 100%;
-  margin-top: 10px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%; */
+  
 }
 
 .Footer_content {
