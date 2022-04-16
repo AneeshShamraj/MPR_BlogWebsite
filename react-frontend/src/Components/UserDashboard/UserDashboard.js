@@ -66,8 +66,7 @@ export const UserDashboard = () => {
       })
       .catch(err =>{
         if(err.response.status===400){
-          // handle kr le bsdk
-          // alert(err.response.data);
+         
         }
       });
   }, [deletedId]);
@@ -117,36 +116,17 @@ export const UserDashboard = () => {
                 </ul>
               </div>
             </div>
-            {/* <div className="col-md-10 col-sm-11 display-table-cell v-align">
-              <div className="row">
-                <header>
-                  <div className="col-md-7">
-                    <div className="search hidden-xs hidden-sm">
-                      <input type="text" placeholder="Search" id="search" />
-                    </div>
-                  </div>
-                </header>
-              </div> */}
-
-            {/* search bar */}
-            {/* <div className="container">
-              <SearchBar
-                placeholder={"Search..."}
-                onChange={handleOnChange}
-                options={[]}
-                customStyles={customStyles}
-              /> */}
-            {/* ** */}
+          
             <div className="user-dashboard">
               <h1>Your Blogs</h1>
             </div>
             <div className="rightPost">
               {[...blogs]
-                // .filter((val) => val.id !== deletedId)
+                
                 .map((val, index) => (
                   <>
                     <Blogpost id={val._id} key={val._id} blog={val} />
-                    {/* <div><i className="fa-solid fa-pen-to-square"></i></div> */}
+                   
                     <Link to={{ pathname: `edit/${val._id}`, param1: blogs }}>
                       <div className="input-field">
                         <button className="btn pink lighten-1 z-depth-0 edit-btn">
@@ -172,28 +152,7 @@ export const UserDashboard = () => {
         </div>
       </div>
 
-      {/* <div id="add_project" className="modal fade" role="dialog">
-    <div className="modal-dialog">
-
-        <div className="modal-content">
-            <div className="modal-header login-header">
-                <button type="button" className="close" data-dismiss="modal">×</button>
-                <h4 className="modal-title">Add Project</h4>
-            </div>
-            <div className="modal-body">
-                        <input type="text" placeholder="Project Title" name="name"/>
-                        <input type="text" placeholder="Post of Post" name="mail"/>
-                        <input type="text" placeholder="Author" name="passsword"/>
-                        <textarea placeholder="Desicrption"></textarea>
-                </div>
-            <div className="modal-footer">
-                <button type="button" className="cancel" data-dismiss="modal">Close</button>
-                <button type="button" className="add-project" data-dismiss="modal">Save</button>
-            </div>
-        </div>
-
-    </div>
-</div> */}
+  
     </>
   );
 };

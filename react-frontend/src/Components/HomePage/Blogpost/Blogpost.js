@@ -20,9 +20,7 @@ const Blogpost = ({ id, blog }) => {
 
           {/* <div className="img"></div> */}
           <div className="name"
-          // onMouseLeave={()=> {
-          //     setTimeout(()=>setShow(false),300);
-          // } }  onMouseEnter={()=> setShow(true) }  
+          
           >
           {blog.user}</div>
           {/* {show?<UserHoverDetail/>:null} */}
@@ -37,16 +35,7 @@ const Blogpost = ({ id, blog }) => {
         {/* <i class="icon fas fa-solid fa-share-nodes fa-2x"></i> */}
         </div>
       </div>
-      {/* <div className="bottom">
-        <div className="bottom_container">
-        {Object.keys(reactionEmoji).map(key=>
-          <span  >
-            <small className="Emoji">{reactionEmoji[key]}</small>
-            <p>{100}</p>
-          </span>
-        )}
-        </div>
-      </div> */}
+     
       <div className="favicon">
       <i className="icon fas fa-heart fa-2x"></i>
       <i className="icon fas fa-flag fa-2x"></i>
