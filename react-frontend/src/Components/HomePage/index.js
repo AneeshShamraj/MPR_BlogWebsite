@@ -37,9 +37,9 @@ const HomePage = () => {
       <div className="homePage__right">
         <div className="homePage__right_card">
           <h3>Interests</h3>
-          {[...category].map((val, index) => (
-            <p key={index}> {val}</p>
-          ))}
+          {[...blogs].splice(0,2).map((val, index) => (
+          <Blogpost id={val._id} key={val._id} blog={val} />
+        ))}
         </div>
       </div>
     </div>
