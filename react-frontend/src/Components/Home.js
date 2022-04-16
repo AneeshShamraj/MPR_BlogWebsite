@@ -7,7 +7,7 @@ import { SignupPage } from "./SignupPage";
 
 const Home = () => {
   return (
-    <div class="Home_container">
+    <div className="Home_container">
       <HomePage />
       {/* <CreateBlog /> */}
     </div>

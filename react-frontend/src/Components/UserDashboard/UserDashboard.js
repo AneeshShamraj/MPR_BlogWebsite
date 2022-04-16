@@ -7,8 +7,13 @@ import Blogpost from "../HomePage/Blogpost/Blogpost";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const UserDashboard = () => {
+  if(!localStorage.token){
+    window.location="/";
+    alert("User must be signed in to access this");
+  }
   const customStyles = {
     container: (base) => ({
       ...base,
@@ -24,85 +29,99 @@ export const UserDashboard = () => {
   };
   const [blogs, setBlogs] = useState([]);
   const [deletedId, setDeleteId] = useState("");
+
+
   // sample home page data
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((json) => {
-        setBlogs(json);
-        console.log(blogs);
-      });
-  }, []);
+    // fetch("http:localhost:5000/home/userposts")
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     setBlogs(json);
+    //     console.log(blogs);
+    //   });
+    axios.get("http://localhost:5000/home/userposts", {headers: {
+      token: localStorage.token
+    }})
+    .then((res)=>{
+      console.log(res);
+      setBlogs(res.data);
+    })
+    .catch(err =>{
+      if(err.response.status===400){
+        alert(err.response.data);
+      }
+  });
+}, []);
   console.log("blogs:", blogs);
+
+
 
   useEffect(() => {
     setBlogs(blogs.filter((blog) => blog.id !== deletedId));
+    const body={blogID:deletedId}
+    axios.post("http://localhost:5000/users/deleteblog",body, {headers: {token: localStorage.token}})
+      .then(res =>{
+        console.log(res);
+        window.location='/user-dashboard';
+      })
+      .catch(err =>{
+        if(err.response.status===400){
+          // handle kr le bsdk
+          // alert(err.response.data);
+        }
+      });
   }, [deletedId]);
 
   return (
     <>
-      <div class="home">
-        <div class="container-fluid display-table">
-          <div class="row display-table-row">
+      <div className="home">
+        <div className="container-fluid display-table">
+          <div className="row display-table-row">
             <div
-              class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box"
+              className="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box"
               id="navigation"
             >
-              <div class="navi">
+              <div className="navi">
                 <ul>
-                  {/* <li class="active">
-                    <a href="#">
-                      <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                      <span class="hidden-xs hidden-sm">User Dashboard</span>
-                    </a>
-                  </li> */}
-                  {/* <li> */}
+                  <div className="create">
                   <a href="create">
-                    {/* <i class="fa fa-tasks" aria-hidden="true"></i>
-                      <span class="hidden-xs hidden-sm">Create Blog</span> */}
-
-                    {/* </li> */}
+                  
                     <button
                       type="button"
-                      class="btn btn-dark btn-secondary btn-lg btn-block"
+                      className="btn btn-dark btn-secondary btn-lg btn-block"
                     >
                       Create Blog
                     </button>
                   </a>
-                  {/* <li>
-                    <a href="/">
-                      <i class="fa fa-home" aria-hidden="true"></i>
-                      <span class="hidden-xs hidden-sm">Home</span>
-                    </a>
-                  </li> */}
-
-                  {/* <li> */}
+                  </div>
+                  <div className="prof">
                   <a href="profile">
-                    {/* <i class="fa fa-user" aria-hidden="true"></i>
-                      <span class="hidden-xs hidden-sm">Profile</span> */}
-
-                    {/* </li> */}
+                   
                     <button
                       type="button"
-                      class="btn btn-dark btn btn-secondary btn-lg btn-block"
+                      className="btn btn-dark btn btn-secondary btn-lg btn-block"
                     >
                       Profile
                     </button>
                   </a>
-                  {/* <li>
-                    <a href="#">
-                      <i class="fa fa-cog" aria-hidden="true"></i>
-                      <span class="hidden-xs hidden-sm">Setting</span>
-                    </a>
-                  </li> */}
+                  </div>
+                  <a href="list">
+                 
+                    <button
+                      type="button"
+                      className="btn btn-dark btn btn-secondary btn-lg btn-block"
+                    >
+                      YOUR LIST
+                    </button>
+                  </a>
                 </ul>
               </div>
             </div>
-            {/* <div class="col-md-10 col-sm-11 display-table-cell v-align">
-              <div class="row">
+            {/* <div className="col-md-10 col-sm-11 display-table-cell v-align">
+              <div className="row">
                 <header>
-                  <div class="col-md-7">
-                    <div class="search hidden-xs hidden-sm">
+                  <div className="col-md-7">
+                    <div className="search hidden-xs hidden-sm">
                       <input type="text" placeholder="Search" id="search" />
                     </div>
                   </div>
@@ -110,7 +129,7 @@ export const UserDashboard = () => {
               </div> */}
 
             {/* search bar */}
-            {/* <div class="container">
+            {/* <div className="container">
               <SearchBar
                 placeholder={"Search..."}
                 onChange={handleOnChange}
@@ -118,18 +137,17 @@ export const UserDashboard = () => {
                 customStyles={customStyles}
               /> */}
             {/* ** */}
-            <div class="user-dashboard">
+            <div className="user-dashboard">
               <h1>Your Blogs</h1>
             </div>
             <div className="rightPost">
               {[...blogs]
-                .splice(0, 5)
                 // .filter((val) => val.id !== deletedId)
                 .map((val, index) => (
                   <>
-                    <Blogpost id={index} key={index} blog={val} />
-                    {/* <div><i class="fa-solid fa-pen-to-square"></i></div> */}
-                    <Link to={{ pathname: `edit/${index}`, param1: blogs }}>
+                    <Blogpost id={val._id} key={val._id} blog={val} />
+                    {/* <div><i className="fa-solid fa-pen-to-square"></i></div> */}
+                    <Link to={{ pathname: `edit/${val._id}`, param1: blogs }}>
                       <div className="input-field">
                         <button className="btn pink lighten-1 z-depth-0 edit-btn">
                           EDIT
@@ -140,8 +158,8 @@ export const UserDashboard = () => {
                       <button
                         className="btn pink lighten-1 z-depth-0 edit-btn"
                         onClick={() => {
-                          console.log("value id:", val.id);
-                          setDeleteId(val.id);
+                          // console.log("value id:", val.id);
+                          setDeleteId(val._id);
                         }}
                       >
                         DELETE
@@ -154,23 +172,23 @@ export const UserDashboard = () => {
         </div>
       </div>
 
-      {/* <div id="add_project" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+      {/* <div id="add_project" className="modal fade" role="dialog">
+    <div className="modal-dialog">
 
-        <div class="modal-content">
-            <div class="modal-header login-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Add Project</h4>
+        <div className="modal-content">
+            <div className="modal-header login-header">
+                <button type="button" className="close" data-dismiss="modal">×</button>
+                <h4 className="modal-title">Add Project</h4>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
                         <input type="text" placeholder="Project Title" name="name"/>
                         <input type="text" placeholder="Post of Post" name="mail"/>
                         <input type="text" placeholder="Author" name="passsword"/>
                         <textarea placeholder="Desicrption"></textarea>
                 </div>
-            <div class="modal-footer">
-                <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                <button type="button" class="add-project" data-dismiss="modal">Save</button>
+            <div className="modal-footer">
+                <button type="button" className="cancel" data-dismiss="modal">Close</button>
+                <button type="button" className="add-project" data-dismiss="modal">Save</button>
             </div>
         </div>
 

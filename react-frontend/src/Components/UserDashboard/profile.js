@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./profile.css";
 import { faCoffee, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 export const Profile = () => {
+  const [user, setUser] = useState([]);
+  useEffect(()=>{
+  axios.get("http://localhost:5000/users/profile", {headers: {
+      token: localStorage.token
+    }})
+    .then((res)=>{
+      console.log(res.data);
+      setUser(res.data);
+    })
+    .catch(err =>{
+        alert(err.response.data);
+        window.location="/";
+      })
+  },[]);
+  if(user){
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title mb-4">
-                <div class="d-flex justify-content-start">
-                  <div class="image-container">
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <div className="card">
+            <div className="card-body">
+              <div className="card-title mb-4">
+                <div className="d-flex justify-content-start">
+                  <div className="image-container">
                     <img
                       // src="http://placehold.it/150x150"
                       id="imgProfile"
                       // style="width: 150px; height: 150px"
-                      class="img-thumbnail"
+                      className="img-thumbnail"
                     />
-                    <div class="middle">
+                    <div className="middle">
                       <input
                         type="button"
-                        class="btn btn-secondary"
+                        className="btn btn-secondary"
                         id="btnChangePicture"
                         value="Change"
                       />
@@ -33,24 +49,24 @@ export const Profile = () => {
                       /> */}
                     </div>
                   </div>
-                  <div class="userData ml-3">
+                  <div className="userData ml-3">
                     <h2
-                      class="d-block"
+                      className="d-block"
                       // style="font-size: 1.5rem; font-weight: bold"
                     >
                       <a href="javascript:void(0);">BlogSquad</a>
                     </h2>
-                    {/* <h6 class="d-block">
+                    {/* <h6 className="d-block">
                       <a href="javascript:void(0)">1,500</a> Video Uploads
                     </h6>
-                    <h6 class="d-block">
+                    <h6 className="d-block">
                       <a href="javascript:void(0)">300</a> Blog Posts
                     </h6> */}
                   </div>
-                  <div class="ml-auto">
+                  <div className="ml-auto">
                     <input
                       type="button"
-                      class="btn btn-primary d-none"
+                      className="btn btn-primary d-none"
                       id="btnDiscard"
                       value="Discard Changes"
                     />
@@ -58,12 +74,12 @@ export const Profile = () => {
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-12">
-                  <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                    <li class="nav-item">
+              <div className="row">
+                <div className="col-12">
+                  <ul className="nav nav-tabs mb-4" id="myTab" role="tablist">
+                    <li className="nav-item">
                       <a
-                        class="nav-link active"
+                        className="nav-link active"
                         id="basicInfo-tab"
                         data-toggle="tab"
                         href="#basicInfo"
@@ -75,41 +91,42 @@ export const Profile = () => {
                       </a>
                     </li>
                   </ul>
-                  <div class="tab-content ml-1" id="myTabContent">
+                  <div className="tab-content ml-1" id="myTabContent">
                     <div
-                      class="tab-pane fade show active"
+                      className="tab-pane fade show active"
                       id="basicInfo"
                       role="tabpanel"
                       aria-labelledby="basicInfo-tab"
                     >
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                      <div className="row">
+                        <div className="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
                           >
                             Full Name
                           </label>
                         </div>
-                        <div class="col-md-8 col-6">
-                          <input
+                        <div className="col-md-8 col-6">
+                          {/* <input
                             type="text"
                             name="text"
                             id="inputTag"
-                            value=" Bhoomi Shetty"
-                          />
+                            defaultValue= {user.firstname}
+                          /> */}
+                          <p>{user.firstname} {user.lastname}</p>
                         </div>
                       </div>
                       <hr />
 
-                      {/* <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                      {/* <div className="row">
+                        <div className="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
                           >
                             Birth Date
                           </label>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div className="col-md-8 col-6">
                           <input
                             type="text"
                             name="text"
@@ -120,69 +137,86 @@ export const Profile = () => {
                       </div>
                       <hr /> */}
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                      <div className="row">
+                        <div className="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
                           >
                             Email
                           </label>
                         </div>
-                        <div class="col-md-8 col-6">
-                          <input
+                        <div className="col-md-8 col-6">
+                          {/* <input
                             type="text"
                             name="text"
                             id="inputTag"
                             value=""
-                          />
+                          /> */}
+                          <p>{user.email}</p>
                         </div>
                       </div>
                       <hr />
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                      <div className="row">
+                        <div className="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
                           >
                             Password
                           </label>
                         </div>
-                        <div class="col-md-8 col-6">
-                          <input
-                            type="text"
-                            name="text"
-                            id="inputTag"
-                            value=""
-                          />
+                        <div className="col-md-8 col-6">
+                           <input
+                            type="password"
+                            name="password"
+                            id="passwordInput"
+                          /> 
+
                         </div>
                       </div>
                       <hr />
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                      <div className="row">
+                        <div className="col-sm-3 col-md-2 col-5">
                           <label
                           // style="font-weight: bold"
                           >
                             Confirm Password
                           </label>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div className="col-md-8 col-6">
                           <input
-                            type="text"
-                            name="text"
-                            id="inputTag"
-                            value=""
+                            type="password"
+                            name="confPassword"
+                            id="confPasswordInput"
                           />
                         </div>
                       </div>
                       <hr />
+                      
                     </div>
-                    <div class="save">
+                    <div className="save">
                       <input
                         type="button"
-                        class="btn btn-secondary btn-lg btn-dark"
+                        className="btn btn-secondary btn-lg btn-dark"
                         id="btnSave"
                         value="SAVE"
+                        onClick={()=>{
+                          const body = {
+                              password: document.getElementById('passwordInput').value,
+                              confPassword: document.getElementById('confPasswordInput').value
+                            };
+                            axios.post("http://localhost:5000/users/profile/changepassword", body, {
+                              headers: {token: localStorage.token}
+                            }).then((res)=>{
+                              console.log(res);
+                              alert('password changed succesfully');
+                            }).catch(err=>{
+                              console.error(err);
+                              alert("passwods don't match")
+                            });
+                        }}
                       />
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -192,4 +226,10 @@ export const Profile = () => {
       </div>
     </div>
   );
-};
+  
+}
+else{
+  return(
+    <h1>Loading</h1>
+  );
+};}

@@ -29,7 +29,7 @@
   background-color: #eaeaea;
   /* background-color: #fff; */
   border: none;
-  padding-top: 100px;
+  padding-top: 25px;
 }
 
 .user-dashboard {
@@ -39,4 +39,14 @@
 /* .search hidden-xs hidden-sm{} */
 .edit-btn {
   margin-left: 1000px;
+}
+.navi{
+  display: inline-block;
+  padding:10px ;
+}
+.create{
+  padding-bottom: 20px;
+}
+.prof{
+  padding-bottom: 20px;
 }

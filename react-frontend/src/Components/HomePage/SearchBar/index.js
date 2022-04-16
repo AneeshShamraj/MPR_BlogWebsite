@@ -11,13 +11,20 @@ const SearchBarComponent = ({
   <div className="styled-search-bar">
     <div className="svg-wrapper"></div>
     <div className="input-component-wrapper">
-      <DropDownComponent
+      {/* <DropDownComponent
         placeholder={placeholder ?? ""}
         options={options}
         onChange={onChange}
         isMulti={true}
         customStyles={customStyles}
-      />
+      /> */}
+      <form>
+      <input
+      placeholder="Search"
+      
+      ></input>
+      
+      </form>
     </div>
   </div>
 );

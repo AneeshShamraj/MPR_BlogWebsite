@@ -1,3 +1,10 @@
+.fa-2x{
+  padding-left: 15px;
+}
+.favicon{
+  padding-top: 100px;
+  display: inline-block;
+}
 .blogpost {
   min-height: 35vh;
   display: flex;

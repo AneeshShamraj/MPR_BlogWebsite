@@ -6,17 +6,17 @@ const Post = require("../models/Post");
 router.get("/profile",require("../middlewares/authOnly"),async (req, res) => {
 
     const currentUser = req.auth.user.username;
-    await User.find({ username: currentUser }, (err, foundUser) => {
+    await User.findOne({ username: currentUser }, (err, foundUser) => {
         res.json(foundUser);
     });
 });
 
 router.post("/profile/changepassword",require("../middlewares/authOnly"),async (req,res)=>{
-    const newpass=req.body.newpass;
-    const confPass=req.body.confPass;
+    const newpass=req.body.password;
+    const confPass=req.body.confPassword;
     const user=req.auth.user.username;
 
-    if(newpass!==confPass) return res.status(400).send("Password and confirm password do not match");
+    if(newpass!=confPass) return res.status(400).send("Password and confirm password do not match");
     try{
     await User.updateOne({username:user},{password:md5(newpass)});
     res.send("Successfully changed password");

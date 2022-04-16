@@ -1,9 +1,9 @@
 // return(
-//   <div class="textbox">
-//     <div class="teaxhead"></div>
-//     <div class="textInput">
+//   <div className="textbox">
+//     <div className="teaxhead"></div>
+//     <div className="textInput">
 //       <input type="text" name="text" id="inputTag" />
-//       <input type="button" name="text" class="button" value="Add" />
+//       <input type="button" name="text" className="button" value="Add" />
 //     </div>
 //   </div>
 // )
@@ -12,8 +12,13 @@
 // import { createProject } from "../../store/actions/projectAction";
 import React, { useState } from "react";
 import "./create.css";
+import axios from "axios";
 
 const Create = () => {
+  if(!localStorage.token){
+    window.location="/";
+    alert("User must be signed in to access this");
+  }
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -26,7 +31,32 @@ const Create = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // this.props.createProject(this.state);
+    const body={
+      postTitle:e.target.title.value,
+      postBody:e.target.content.value,
+      }
+      console.log(body);
+    
+      axios.post("http://localhost:5000/home/createblog",body, {
+        headers: {
+          token: localStorage.token
+        }
+      })
+      .then(res =>{
+        console.log(res);
+        // if(res.err){
+        //   alert(res.err);
+        //   // window.location.reload();
+        // }
+        // else{
+        window.location="/"
+        // }
+      })
+      .catch(err =>{
+        if(err.response.status===400){
+          alert(err.response.data);
+        }
+      });
   };
 
   return (
@@ -35,12 +65,13 @@ const Create = () => {
         <h5 className="grey-text text-darken-3">Create new blog</h5>
         <div className="input-field">
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" onChange={handleChange} />
+          <input type="text" name="title" id="title" onChange={handleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="content">Content</label>
           <textarea
             id="content"
+            name="content"
             className="materialize-textarea"
             onChange={handleChange}
           ></textarea>
@@ -48,6 +79,7 @@ const Create = () => {
         <div className="input-field">
           <button className="btn pink lighten-1 z-depth-0">ADD</button>
         </div>
+        
       </form>
     </div>
   );

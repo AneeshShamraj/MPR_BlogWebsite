@@ -12,17 +12,9 @@ import { LoginPage } from "./Components/LoginPage";
 import { Profile } from "./Components/UserDashboard/profile";
 import EditBlog from "./Components/UserDashboard/editBlog";
 
+
 function App() {
-  // const [token, setToken] = useState(null);
-
-  // useEffect(() => {
-  //   if (localStorage.token) setToken(localStorage.token);
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log({ newtoken: token });
-  // }, [token]);
-
+  
   return (
     <BrowserRouter>
       <Navbar />
@@ -35,6 +27,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/user-dashboard" component={UserDashboard} />
         <Route exact path="/blogs/:id" component={BlogDetail} />
+        <Route exact path="/list" component={Home} />
       </Switch>
       <Footer />
     </BrowserRouter>

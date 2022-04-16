@@ -4,12 +4,16 @@ import Notsignedin from "./Notsignedin";
 // import "./Navbar.css";
 import { Link } from "react-router-dom";
 const Navbar = () => {
-  // Todo : Check whether user has logedin or not .
+  if(localStorage.token){
+   var checkLoggedIn=true
+  }
+  else{
+   var checkLoggedIn=false;
+  }
 
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(checkLoggedIn);
   const handleLogoutClick = () => {
-    console.log("inside here");
+    localStorage.clear();
     setIsLoggedIn(false);
   };
 
