@@ -36,6 +36,7 @@ router.post("/createblog",require("../middlewares/authOnly"),async (req, res) =>
     const currentUser=req.auth.user.username;
     const newTitle = req.body.postTitle;
     const newBody = req.body.postBody;
+    const category=req.body.category;
     if (filter.isProfane(newTitle) || filter.isProfane(newBody)) {
         res.status(400).send("Censored Words detected in the blog. Cannot post the blog.");
     }
@@ -45,7 +46,8 @@ router.post("/createblog",require("../middlewares/authOnly"),async (req, res) =>
             title: newTitle,
             content: newBody,
             user: currentUser,
-            timestamp:timestamp
+            timestamp:timestamp,
+            category:category
         });
         await newPost.save();
         res.json(newPost);
@@ -78,6 +80,33 @@ router.get("/getblog/:id",async (req, res) => {
         catch{
             res.status(400).send("Error");
         }
+});
+
+router.post("/saveblog",require("../middlewares/authOnly"),async(req,res)=>{
+    const saveblogId=req.body.objectid;
+    const currentUser=req.auth.user.username;
+
+    const userObj = await User.find({ username: currentUser });
+
+    //Checking if blog is already saved by user
+    if(userObj[0].savedblogs.includes(saveblogId)) return res.status(400).send("Blog is already saved");
+
+    res.send(await User.updateOne({username:currentUser},{$push:{savedblogs:saveblogId}}));
+});
+
+router.get("/getsavedblogs",require("../middlewares/authOnly"),async(req,res)=>{
+    const currentUser=req.auth.user.username;
+    const userObj= await User.find({username:currentUser});
+    
+    return res.json(await Post.find({_id:{$in: userObj[0].savedblogs}}));
+});
+
+router.get("/interestedblogs",require("../middlewares/authOnly"),async(req,res)=>{
+    const currentUser=req.auth.user.username;
+    const userObj= await User.findOne({username:currentUser});
+
+    var foundPosts = await Post.find({category:{$in: userObj.interests}}).sort({timestamp:-1});
+    res.json(foundPosts.slice(0,5));
 });
 
 module.exports = router;

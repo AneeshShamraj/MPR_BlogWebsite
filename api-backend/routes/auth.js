@@ -12,8 +12,9 @@ router.post("/register", async (req, res) => {
 	const firstname=req.body.firstname;
 	const lastname=req.body.lastname;
 	const confPassword=req.body.confPassword;
+	const interests=req.body.interests;
 
-	if (!username || !password || !email || !firstname || !lastname || !confPassword)
+	if (!username || !password || !email || !firstname || !lastname || !confPassword || !interests)
 		return res.status(400).send("One or more of the fields are missing.");
 
 	// checking if username exists
@@ -28,7 +29,7 @@ router.post("/register", async (req, res) => {
 
 	// add user
 	const hash=md5(password);
-	const newUser = new User({ username, password:hash, firstname,lastname,email });
+	const newUser = new User({ username, password:hash, firstname,lastname,email,interests });
 	return res.json(await newUser.save());
 });
 

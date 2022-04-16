@@ -6,9 +6,7 @@ const Post = require("../models/Post");
 router.get("/profile",require("../middlewares/authOnly"),async (req, res) => {
 
     const currentUser = req.auth.user.username;
-    await User.findOne({ username: currentUser }, (err, foundUser) => {
-        res.json(foundUser);
-    });
+    return res.json(await User.findOne({username:currentUser}));
 });
 
 router.post("/profile/changepassword",require("../middlewares/authOnly"),async (req,res)=>{

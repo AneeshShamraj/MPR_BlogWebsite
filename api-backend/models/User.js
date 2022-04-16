@@ -21,6 +21,12 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
+    savedblogs:[{
+        type:mongoose.ObjectId,
+    }],
+    interests:[{
+        type:String,
+    }],
 });
 
 
