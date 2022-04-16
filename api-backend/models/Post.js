@@ -15,7 +15,10 @@ const mongoose=require("mongoose");
     timestamp:{
         type:Number,
         required:true,
-    }
+    },
+    category:{
+        type:String,
+    },
  });
 
  module.exports=mongoose.model("Post",postSchema);
