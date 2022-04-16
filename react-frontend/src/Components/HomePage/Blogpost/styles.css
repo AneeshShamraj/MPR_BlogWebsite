@@ -30,12 +30,15 @@
   min-height: 5vh;
   padding-left: 20px;
   position: relative;
+  word-wrap: break-word;
+
 }
 .body {
   transform: translateY(10px);
   padding-left: 20px;
   min-height: 10vh;
   height: max-content;
+  word-wrap: break-word;
 }
 .title {
   font-weight: 800;
@@ -44,6 +47,8 @@
   margin-bottom: 2px;
   width: 80%;
   cursor: pointer;
+  word-wrap: break-word;
+
 }
 
 .name {

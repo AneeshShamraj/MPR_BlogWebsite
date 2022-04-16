@@ -13,9 +13,9 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   padding-top: 4vh;
-
+  background-color: rgba(255, 250, 250, 0.723);
 }
 .homePage__left {
   width: 60%;
@@ -35,6 +35,6 @@
   display: none; /* Safari and Chrome */
 }
 .Home_container {
-  height: 80vh;
+  height: 100vh;
   display: flex;
 }

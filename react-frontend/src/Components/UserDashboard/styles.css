@@ -34,9 +34,43 @@
 
 .user-dashboard {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 40px;
+}
+.user-dashboard h1 {
+  text-align: start;
 }
 /* .search hidden-xs hidden-sm{} */
 .edit-btn {
-  margin-left: 1000px;
+  /* margin-left: 1000px; */
+}
+.display-table {
+  width: 60vw !important;
+  margin: auto;
+}
+.navi__userDashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw !important;
+  margin: auto;
+  padding: 0 10px;
+}
+.navi__userDashboard a{
+  text-decoration: none;
+}
+.navi__userDashboard button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-field {
+  display: flex;
+  align-items: center;
+}
+.input-field a {
+  text-decoration: none;
+}
+.input-field button {
+  margin-left: 10px;
+  color: white;
 }
