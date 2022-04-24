@@ -20,18 +20,26 @@
 .homePage__left {
   width: 60%;
   height: 100%;
+}
+.homePage__left h3{
+  text-align: center;
+}
+.homePage__left_interest{
   max-height: 78vh;
-  overflow-y: auto;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 6vh;
 }
-
-.homePage__left::-webkit-scrollbar {
+.homePage__left_interest{
+  padding-top: 300px;
+}
+.homePage__left div::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 .Home_container {

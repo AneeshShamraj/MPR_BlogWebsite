@@ -21,6 +21,7 @@ const Create = () => {
   }
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [category,setCategory]=useState("");
 
   const handleChange = (e) => {
     console.log(e);
@@ -34,6 +35,7 @@ const Create = () => {
     const body={
       postTitle:e.target.title.value,
       postBody:e.target.content.value,
+      category:e.target.category.value
       }
       console.log(body);
     
@@ -65,7 +67,7 @@ const Create = () => {
         <h5 className="grey-text text-darken-3">Create new blog</h5>
         <div className="input-field">
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" onChange={handleChange} />
+          <input type="text" name="title" id="title" onChange={(e)=>handleChange(e.target.value)} />
         </div>
         <div className="input-field">
           <label htmlFor="content">Content</label>
@@ -73,9 +75,15 @@ const Create = () => {
             id="content"
             name="content"
             className="materialize-textarea"
-            onChange={handleChange}
+            onChange={(e)=>handleChange(e.target.value)}
           ></textarea>
         </div>
+
+        <div className="input-field">
+          <label htmlFor="category">Enter the category(entertainment,science,tourism,finance,news)</label>
+          <input type="text" name="category" id="category" onChange={(e)=>handleChange(e.target.value)} />
+        </div>
+
         <div className="input-field">
           <button className="btn pink lighten-1 z-depth-0">ADD</button>
         </div>
