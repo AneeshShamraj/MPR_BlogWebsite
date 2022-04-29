@@ -4,6 +4,7 @@ import "./styles.css";
 import Blogpost from "./Blogpost/Blogpost";
 import SearchBar from "./SearchBar";
 import axios from "axios";
+// import SearchBarComponent from "./SearchBar";
 
 const HomePage = () => {
   const category = ["science", "entertainment", "news", "tourism", "finance"];
@@ -29,6 +30,7 @@ const HomePage = () => {
   };
   return (
     <div className="home__container">
+      {/* <SearchBarComponent></SearchBarComponent> */}
       <div className="homePage__left">
         {[...blogs].map((val, index) => (
           <Blogpost id={val._id} key={val._id} blog={val} />

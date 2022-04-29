@@ -23,7 +23,14 @@ const Blogpost = ({ id, blog }) => {
           {blog.content.substring(0, 250)}.......
         </div>
       </div>
+  
+    
+    <div className="favicon">
+    <i className="icon fas fa-heart fa-2x"></i>
+    <i className="icon fas fa-flag fa-2x"></i>
+    <i className="icon fas fa-bookmark fa-2x"></i>
     </div>
+  </div>
   );
 };
 

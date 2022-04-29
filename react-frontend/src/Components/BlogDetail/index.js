@@ -40,9 +40,12 @@ const BlogDetail = () => {
               <p className="lead">
                 {blogContent}
               </p>
+              </div>
+              <i className="comment icon fas fa-regular fa-comment fa-2x"></i>
+              </div>
               
-            </div>
-          </div>
+          
+       
         
   );
 }
