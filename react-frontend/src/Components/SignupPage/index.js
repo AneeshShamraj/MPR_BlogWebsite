@@ -12,6 +12,12 @@ export const SignupPage = () => {
   const [newpassword, setnewPassword] = useState("");
   const [confirmpassword, setconfirmPassword] = useState("");
   const [checkbox, setcheckBox] = useState(false);
+  // const [science,setScience]=useState("");
+  // const [entertainment,setEntertainment]=useState("");
+  // const [news,setNews]=useState("");
+  // const [tourism,setTourism]=useState("");
+  // const [finance,setFinance]=useState("");
+  const [interests,setInterests]=useState("");
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -21,7 +27,9 @@ export const SignupPage = () => {
       email:e.target.email.value,
       confPassword:e.target.confPassword.value,
       firstname:e.target.firstname.value,
-      lastname:e.target.lastname.value}
+      lastname:e.target.lastname.value,
+      interests:interests.split(" ")
+    }
       console.log({body});
     
       axios.post("http://localhost:5000/auth/register",body)
@@ -57,7 +65,7 @@ export const SignupPage = () => {
                   name="firstname"
                   placeholder="Full Name"
                   type="text"
-                  required
+        
                   autofocus
                   onChange={(e) => setfirstName(e.target.value)}
                   value={firstname}
@@ -70,7 +78,7 @@ export const SignupPage = () => {
                   name="lastname"
                   placeholder="Last Name"
                   type="text"
-                  required
+      
                   onChange={(e) => setlastName(e.target.value)}
                   value={lastname}
                 />
@@ -112,6 +120,16 @@ export const SignupPage = () => {
               onChange={(e) => setconfirmPassword(e.target.value)}
               value={confirmpassword}
             />
+            <h6>Categories available: science,entertainment,news,tourism,finance</h6><br />
+            <h6>Enter your interests below. All words should be separated by a space and in lowercase</h6>
+            <input
+            required
+            placeholder="Interests"
+            name="interests"
+            type="text"
+            onChange={(e)=>setInterests(e.target.value)}
+            />
+            
             {/* <div id="remember" className="checkbox">
               <label>
                 <input

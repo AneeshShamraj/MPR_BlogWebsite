@@ -20,7 +20,7 @@ const Blogpost = ({ id, blog }) => {
           {blog.title}
         </div>
         <div className="description">
-          {blog.content.substring(0, 250)}.......
+          {blog.content.substring(0, 150)}.......
         </div>
       </div>
   

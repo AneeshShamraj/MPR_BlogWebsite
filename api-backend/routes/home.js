@@ -58,13 +58,14 @@ router.post("/editblog/:id",require("../middlewares/authOnly"),async (req, res) 
     const id=req.params.id
     const newTitle = req.body.postTitle;
     const newBody = req.body.postBody;
+    const newCategory=req.body.postCategory;
     if (filter.isProfane(newTitle) || filter.isProfane(newBody)) {
         res.status(400).send("Censored Words detected in the blog. Cannot post the blog.");
     }
     else {
         const timestamp=Date.now();
         try{
-        res.send(await Post.updateOne({_id:id},{title:newTitle,content:newBody,timestamp:timestamp}));
+        res.send(await Post.updateOne({_id:id},{title:newTitle,content:newBody,timestamp:timestamp,category:newCategory}));
         }
         catch{
             res.status(500).send("Error");
@@ -108,5 +109,6 @@ router.get("/interestedblogs",require("../middlewares/authOnly"),async(req,res)=
     var foundPosts = await Post.find({category:{$in: userObj.interests}}).sort({timestamp:-1});
     res.json(foundPosts.slice(0,5));
 });
+
 
 module.exports = router;

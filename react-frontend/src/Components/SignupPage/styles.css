@@ -34,3 +34,7 @@ legend {
   margin-top: 20px;
   padding-bottom: 20px;
 }
+
+.check{
+  display: flex;
+}

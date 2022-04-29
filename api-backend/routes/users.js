@@ -57,5 +57,13 @@ router.post("/deleteblog",require("../middlewares/authOnly"),async (req,res)=>{
     }
 });
 
+
+router.post("/changepreferences",require("../middlewares/authOnly"),async (req,res)=>{
+    const preferences=req.body.preferences;
+    const user=req.auth.user.username;
+
+    return res.json(await User.updateOne({username:user},{interests:preferences}));
+});
+
 module.exports = router;
 
