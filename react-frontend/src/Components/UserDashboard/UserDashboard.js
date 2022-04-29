@@ -93,6 +93,14 @@ export const UserDashboard = () => {
                     Create Blog
                   </button>
                 </a>
+                <a href="saved">
+                  <button
+                    type="button"
+                    className="btn btn-dark btn-secondary btn-lg btn-block"
+                  >
+                    Saved List
+                  </button>
+                </a>
                 <a href="profile">
                   <button
                     type="button"

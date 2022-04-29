@@ -36,3 +36,10 @@ section {
   padding-top: 800px;
   padding-left: 100px;
 }
+.BlogStyle{
+  display: flex;
+  min-height: 72vh  ;
+}
+.blodyDetail__container{
+  width: 90%;
+}

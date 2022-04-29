@@ -61,3 +61,14 @@ input#inputTag {
   /* padding: 100px; */
   /* padding-left: 350px; */
 }
+.mui-singleSelectTag {
+  display: block !important;
+}
+.input-field{
+  display: flex;
+  align-items: center;
+}
+.input-field p{
+  display: block;
+  margin-right: 10px;
+}

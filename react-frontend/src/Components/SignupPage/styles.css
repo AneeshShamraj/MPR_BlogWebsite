@@ -38,3 +38,6 @@ legend {
 .check{
   display: flex;
 }
+.mui-multiselect{
+  display: block !important;
+}

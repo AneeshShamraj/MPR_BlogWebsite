@@ -1,3 +1,4 @@
+import { MenuItem, Select } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -14,19 +15,7 @@ const EditBlog = (props) => {
   // const [content, setContent] = useState(props.location.param1[id].content);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
-// useEffect(()=>{
-//   axios.get("http://localhost:5000/users/profile", {headers: {
-//       token: localStorage.token
-//     }})
-//     .then((res)=>{
-//       console.log(res.data);
-//       setUser(res.data);
-//     })
-//     .catch(err =>{
-//         alert(err.response.data);
-//       })
-//   },[]);
+  const [selected,setSelected] = useState([])
 
   useEffect(()=>{
     axios.get("http://localhost:5000/home/getblog/"+id,{headers:{
@@ -107,6 +96,22 @@ const EditBlog = (props) => {
           ></textarea>
         </div>
         <div className="input-field">
+          <p>Change Blog category</p>
+
+          <Select
+            className="mui-singleSelectTag"
+            multiple={false}
+            value={selected}
+            onChange={(event) => setSelected(event.target.value)}
+          >
+            <MenuItem value="science">science</MenuItem>
+            <MenuItem value="entertainment">entertainment</MenuItem>
+            <MenuItem value="tourism">tourism</MenuItem>
+            <MenuItem value="finance">finance</MenuItem>
+            <MenuItem value="other">other</MenuItem>
+          </Select>
+        </div>
+        <div className="input-field"> 
           <button className="btn pink lighten-1 z-depth-0">ADD</button>
         </div>
       </form>

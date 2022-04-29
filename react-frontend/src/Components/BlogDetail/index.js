@@ -14,6 +14,15 @@ const BlogDetail = () => {
   //       setBlog(json);
   //     });
   // }, []);
+  const handleClick = (e) => {
+    const payload = {
+      objectId: id,
+    };
+    axios
+      .post("http://localhost:5000/home/saveblog", payload)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     axios
       .get("http://localhost:5000/home/getblog/" + id)
@@ -29,12 +38,18 @@ const BlogDetail = () => {
   if (blogContent !== "" && blogTitle !== "") {
     return (
       <div className="BlogStyle">
-        <div className="BlogDetail_wrapper">
-          <h1>{blogTitle}</h1>
+        <div className="blodyDetail__container">
+          <div className="BlogDetail_wrapper">
+            <h1>{blogTitle}</h1>
+          </div>
+          <div className="blog_body-content">
+            <p className="lead">{blogContent}</p>
+          </div>
         </div>
-
-        <div className="blog_body-content">
-          <p className="lead">{blogContent}</p>
+        <div>
+          <button onClick={(e) => handleClick(e)} className="btn btn-secondary">
+            Save
+          </button>
         </div>
       </div>
     );

@@ -11,6 +11,7 @@ import { SignupPage } from "./Components/SignupPage";
 import { LoginPage } from "./Components/LoginPage";
 import { Profile } from "./Components/UserDashboard/profile";
 import EditBlog from "./Components/UserDashboard/editBlog";
+import SavedPage from "./Components/UserDashboard/saved";
 
 function App() {
   
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/user-dashboard" component={UserDashboard} />
         <Route exact path="/blogs/:id" component={BlogDetail} />
+        <Route exact path="/savedblogs" component={SavedPage} />
       </Switch>
       <Footer />
     </BrowserRouter>
