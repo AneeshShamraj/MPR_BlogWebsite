@@ -9,7 +9,7 @@ app.use(cors({ exposedHeaders: "token" }));
 
 app.use(require("./middlewares/auth"));
 
-mongoose.connect("mongodb://localhost:27017/projectDb",()=>{
+mongoose.connect("mongodb+srv://admin:admin@cluster0.lb5fb.mongodb.net/projectDb",()=>{
     console.log("Connected to Database");
 });
 app.use("/auth", require("./routes/auth"));
