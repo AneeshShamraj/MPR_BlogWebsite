@@ -5,4 +5,5 @@ function authOnly(req, res, next) {
 	next();
 }
 
-module.exports = authOnly;
+
+module.exports=authOnly;
